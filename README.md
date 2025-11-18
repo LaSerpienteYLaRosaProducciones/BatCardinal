@@ -13,7 +13,7 @@ Builds are available for Windows, Linux and Apple hardware **only**, for the arc
 
 Do note that, at the moment, **both the official DISTRHO Cardinal and Bat Cardinal can't be installed at the same time**: it is either one or the other (this may change in the future if these builds are still necessary).
 
-The original readme follows.
+The original README follows, mostly untouched: it includes the plugins added by this build in the original available plugin list.
 
 ---
 
@@ -22,26 +22,26 @@ The original readme follows.
 *Cardinal, the Rack!*
 
 Cardinal is a free and open-source virtual modular synthesizer plugin,
-available in AudioUnit/CLAP/LV2/VST2/VST3 plugin formats and as a standalone app for FreeBSD, Linux, macOS, Windows and the Web.  
+available in AudioUnit/CLAP/LV2/VST2/VST3 plugin formats and as a standalone app for FreeBSD, Linux, macOS, Windows and the Web.
 It is based on the popular [VCV Rack](https://vcvrack.com/) but with a focus on being a fully self-contained plugin version.
 
 More specifically, this is a [DPF-based](https://github.com/DISTRHO/DPF/)
 plugin wrapper around [VCV Rack](https://github.com/VCVRack/Rack/),
 using its code directly instead of forking the project,
-with the target of having a **self-contained, fully free and open-source plugin version of Rack**.  
+with the target of having a **self-contained, fully free and open-source plugin version of Rack**.
 See the [why section](#Why) below for the reasons Cardinal exists,
 also for frequently asked questions check this [FAQ document](docs/FAQ.md).
 
-Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.  
+Cardinal contains Rack, some 3rd-party modules and a few internal utilities all in a single binary.
 All "Core" modules from Rack have been replaced by Cardinal equivalents, simplified to better work for an audio plugin.
 
-Cardinal does not load external modules and does not connect to the official Rack library/store.  
+Cardinal does not load external modules and does not connect to the official Rack library/store.
 All VCV branding has been removed (to the best of our knowledge) in order to avoid any trademark issues.
 
 
 ## Current status
 
-Cardinal should be considered stable, if you spot any bugs please report them.  
+Cardinal should be considered stable, if you spot any bugs please report them.
 Currently the following should be noted:
 
 - CLAP support is a work-in-progress [DPF#383](https://github.com/DISTRHO/DPF/issues/383)
@@ -50,19 +50,19 @@ Currently the following should be noted:
 
 ### Stable release
 
-Cardinal releases have official builds for Linux, macOS and Windows.  
+Cardinal releases have official builds for Linux, macOS and Windows.
 You can find these under https://github.com/DISTRHO/Cardinal/releases.
 
 There are Linux builds for various architectures (armhf, arm64, i686, riscv64 and x86_64), macOS "universal" (arm64 + intel) and Windows 32 and 64bit builds.
-Both macOS and Windows builds have an installer.  
+Both macOS and Windows builds have an installer.
 Install instructions are available [here](https://github.com/DISTRHO/Cardinal/wiki/Install).
 
 Note: Neither the macOS or Windows builds are signed, so expect warnings saying they are from an "untrusted developer".
 
 ### Nightly builds
 
-You can find builds for pretty much any recent Cardinal commit [here](https://github.com/DISTRHO/Cardinal/actions/workflows/build.yml).  
-Just click on any successful build, and scroll to the bottom to find the builds.  
+You can find builds for pretty much any recent Cardinal commit [here](https://github.com/DISTRHO/Cardinal/actions/workflows/build.yml).
+Just click on any successful build, and scroll to the bottom to find the builds.
 (note the canvas-like area in the middle prevents mouse wheel scrolling)
 
 A GitHub account is required in order to download these builds.
@@ -74,47 +74,47 @@ Basic building instructions are available in [BUILDING.md](docs/BUILDING.md).
 
 ## Plugin variants
 
-Cardinal provides 3 plugin variants - "main", Synth and FX.  
-They are all equivalent in performance and behaviour, with only the IO and metadata that changes.  
+Cardinal provides 3 plugin variants - "main", Synth and FX.
+They are all equivalent in performance and behaviour, with only the IO and metadata that changes.
 This is because some hosts are very strict on which plugins are allowed as instruments vs FX, so separate variants of the same plugin are needed.
 
-FX and Synth variants both have 2 audio outputs, while "main" has 8.  
+FX and Synth variants both have 2 audio outputs, while "main" has 8.
 All variants have MIDI input and output support.
 
 ### Main
 
 This variant provides 8 audio inputs and outputs and 10 CV inputs and outputs.
 
-NOTE: Due to AU and VST2 formats not supporting CV ports, this variant is not available for those formats.  
+NOTE: Due to AU and VST2 formats not supporting CV ports, this variant is not available for those formats.
 NOTE: This variant is not available in CLAP yet, to be added in a later release
 
 ### Synth
 
-This variant provides 2 audio outputs but no audio inputs or CV ports.  
+This variant provides 2 audio outputs but no audio inputs or CV ports.
 Plugin type is set as "instrument".
 
 ### FX
 
-This variant provides 2 audio inputs and outputs, but no CV ports.  
+This variant provides 2 audio inputs and outputs, but no CV ports.
 Plugin type is set as regular "effect".
 
 ### Mini
 
-This is a special variant with a very small, hand-picked module selection and limited IO (2 audio ports plus 5 CV).  
+This is a special variant with a very small, hand-picked module selection and limited IO (2 audio ports plus 5 CV).
 It only exists as LV2 and Standalone plugin.
 
-For now the list of selected modules is quite small, intentionally. We will add a few more as the need appears.  
+For now the list of selected modules is quite small, intentionally. We will add a few more as the need appears.
 All included modules support polyphony, reducing confusion for new users not yet used to mono vs poly approach in Rack/Cardinal.
 
-The main reason for this variant to exist is being able to support DSP/UI separation, which is only possible with more simple modules.  
-The DSP/UI separation means we can run the DSP on a different machine than the UI.  
-This is particularly interesting for running Cardinal on embed systems, being controlled remotely via a web browser or a native desktop application.  
+The main reason for this variant to exist is being able to support DSP/UI separation, which is only possible with more simple modules.
+The DSP/UI separation means we can run the DSP on a different machine than the UI.
+This is particularly interesting for running Cardinal on embed systems, being controlled remotely via a web browser or a native desktop application.
 Such setup is already in use in [Cardinal Mini for MOD Audio](https://forum.mod.audio/t/distrho-cardinal-mini/9262/).
 
 
 ## Screenshots
 
-Because people will ask for it. It is, well... Rack.  
+Because people will ask for it. It is, well... Rack.
 But a couple of modules background's have their colors flipped, because damn we want proper dark mode!
 
 ### Module browser
@@ -207,6 +207,8 @@ At the moment the following 3rd-party modules are provided:
 - [RCM](https://github.com/Rcomian/rcm-modules/)
 - [RebelTech](https://github.com/hemmer/rebel-tech-vcv)
 - [repelzen](https://github.com/wiqid/repelzen)
+- [Sanguine Monsters](https://github.com/Bloodbat/SanguineMonsters)
+- [Sanguine Mutants](https://github.com/Bloodbat/SanguineMutants)
 - [Sapphire](https://github.com/cosinekitty/sapphire)
 - [Sonus Modular](https://gitlab.com/sonusdept/sonusmodular)
 - [stocaudio](https://github.com/aptrn/stocaudio-modules)
@@ -227,24 +229,24 @@ Additionally Cardinal provides its own modules for DAW/Host automation, time pos
 ### Adding modules
 
 Installing new modules on a Cardinal build is not possible, but we can integrate existing open-source modules to be part of Cardinal.
-Details on this are available [here](https://github.com/DISTRHO/Cardinal/discussions/28).  
+Details on this are available [here](https://github.com/DISTRHO/Cardinal/discussions/28).
 Also check [this wiki page](https://github.com/DISTRHO/Cardinal/wiki/Possible-modules-to-include)
-where we discuss possible modules to include.  
+where we discuss possible modules to include.
 
 ### Module restrictions
 
-All included modules are open-source and have a GPLv3+ compatible license. (GPLv3-only modules are not allowed)  
+All included modules are open-source and have a GPLv3+ compatible license. (GPLv3-only modules are not allowed)
 It is a requirement that the final Cardinal binary is GPLv3+ licensed.
 
-Module dependencies should be kept at a minimum, as otherwise it quickly grows the complexity of the build.  
+Module dependencies should be kept at a minimum, as otherwise it quickly grows the complexity of the build.
 Online access (such as phone-home) is not allowed.
 
-Worth noting that a few modules have artwork licensed separately from their code.  
-These licenses range from CC-0 to CC-NC-ND to custom (used with permission).  
+Worth noting that a few modules have artwork licensed separately from their code.
+These licenses range from CC-0 to CC-NC-ND to custom (used with permission).
 An overview of the included artwork licenses can be seen [here](docs/LICENSES.md#artwork--panel-licenses).
 
 Even though CC-NC is problematic for packaging (some linux distributions are commercial in nature),
-Cardinal allows their use because of how prevalent they are across many Rack modules.  
+Cardinal allows their use because of how prevalent they are across many Rack modules.
 Even the Rack "Component Library" (which can be considered the base widget elements) is CC-NC licensed.
 
 Any artwork that uses a custom license has had explicit permission to be used in Cardinal.
@@ -252,24 +254,24 @@ Any artwork that uses a custom license has had explicit permission to be used in
 
 ## Why
 
-Cardinal was created first and foremost as a way to have Rack as a **proper open-source audio plugin**.  
+Cardinal was created first and foremost as a way to have Rack as a **proper open-source audio plugin**.
 A proper audio plugin should be self-contained as much as possible, as to not interfere with the DAW/Host.
-Loading external modules clearly goes against this idea.  
+Loading external modules clearly goes against this idea.
 Not to mention being **open-source**, otherwise we are at the mercy of the wishes of a company for what we can and cannot do,
 which is not something Cardinal's authors wish to abide by.
 
-A self-contained plugin can't be overstated, as DLL/shared-object symbol conflicts can trigger hard-to-debug crashes.  
-While Rack tries to mitigate this as much as possible, crashes due to conflicting modules have already been seen in v2 builds.  
+A self-contained plugin can't be overstated, as DLL/shared-object symbol conflicts can trigger hard-to-debug crashes.
+While Rack tries to mitigate this as much as possible, crashes due to conflicting modules have already been seen in v2 builds.
 On the other side, Cardinal redefines class and function names as needed to avoid as many conflicts as possible.
 
-Support for ARM and non-mainstream platforms (for example BSD) has also always been missing from the official Rack since the start.  
-While we can patch the Rack free version to support these, same can't be done with Rack Pro with it being a closed-source product.  
+Support for ARM and non-mainstream platforms (for example BSD) has also always been missing from the official Rack since the start.
+While we can patch the Rack free version to support these, same can't be done with Rack Pro with it being a closed-source product.
 The online library/store only supports a very specific set of platforms too,
 so non-supported platforms would need any 3rd-party modules to be manually compiled to make them usable.
 
-Unhappiness with the audio threading behaviour of Rack also plays a role.  
-Both audio and MIDI should be locked to the host audio thread as to minimize (or even altogether remove) latency and jitter.  
-The use of separate threads for MIDI is bad design, one that has been corrected in DAWs and JACK-MIDI for several years...  
+Unhappiness with the audio threading behaviour of Rack also plays a role.
+Both audio and MIDI should be locked to the host audio thread as to minimize (or even altogether remove) latency and jitter.
+The use of separate threads for MIDI is bad design, one that has been corrected in DAWs and JACK-MIDI for several years...
 But Rack's use of RtMidi requires separate threading, so Cardinal does not use it.
 
 Other relevant reasons include:
@@ -284,10 +286,10 @@ Other relevant reasons include:
 
 ## Vs. Rack Pro
 
-It needs to be said that Cardinal project and its author(s) do not wish anything bad to the original/official Rack project.  
+It needs to be said that Cardinal project and its author(s) do not wish anything bad to the original/official Rack project.
 In fact, Cardinal wouldn't exist if not for Rack v2 release. (which has many needed things to make a plugin version work)
 
-Cardinal and Rack should be able to co-exist friendly and peacefully, as they clearly have different targets.  
+Cardinal and Rack should be able to co-exist friendly and peacefully, as they clearly have different targets.
 It is likely most people will prefer to use Rack Pro for its official support and its big module collection (including commercial ones).
 
 A feature comparison between Cardinal and Rack Pro can be seen [here](docs/DIFFERENCES.md).
@@ -295,11 +297,11 @@ A feature comparison between Cardinal and Rack Pro can be seen [here](docs/DIFFE
 
 ## License
 
-Cardinal is licensed under GPLv3+, see [LICENSE](LICENSE) for more details.  
+Cardinal is licensed under GPLv3+, see [LICENSE](LICENSE) for more details.
 An overview of the included code and linked submodules can be seen [here](docs/LICENSES.md#code-license--binary).
 
 
 ## Community chat
 
-Currently we are all on #cardinal IRC room in irc.libera.chat server.  
+Currently we are all on #cardinal IRC room in irc.libera.chat server.
 Come join us in your favorite IRC client.
